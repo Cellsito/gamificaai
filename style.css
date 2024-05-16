@@ -8,11 +8,11 @@
     --laranja-gamifica: #f06638;
 }
 
-/* Reset de CSS */
+/* Reset de CSS - Limpa configurações padrão que atrapalham */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;    
 }
 
 html {
@@ -23,16 +23,88 @@ html {
     width: 80vw;
     max-width: 1400px;
 
+    /* margin: 30px - Espaçamento de 30 px em torno do elemento*/
+    /* margin: 0px 30px - Espaçamento 0px vertical e 30px horizontal*/
+    /* margin: 0px 30px 10px - Espaçamento 0px para cima, 30px horizontal e 10 para baixo*/
+    
+    /* margin: 0px 30px 10px 20px- 
+    Espaçamento 0px para cima, 30px para direita e 10 para baixo e 20 para esquerda*/
     margin: 0 auto;
 }
 
 .banner {
+    /* vh -> Porcentagem da ALTURA da viewport (janela) */
     height: 100vh;
-
-    background-image: linear-gradient(90deg, rgba(53, 24, 104, 1) 0%, rgba(53, 24, 104, 0.8) 100%) ,url(img/bg-room.png);
+    
     background-repeat: no-repeat;
 
     background-position: 165% 40%;
+
+    position: relative;
+}
+
+.primeiro-banner {
+    background-image: linear-gradient(90deg, rgba(53, 24, 104, 1) 0%, rgba(53, 24, 104, 0.8) 100%), url(img/bg-room.png);
+}
+
+.segundo-banner {
+    background-image: linear-gradient(90deg, rgba(24, 104, 36, 1) 0%, rgba(24, 104, 36, 0.8) 100%), url(img/bg-room.png);
+}
+
+.terceiro-banner {
+    background-image: linear-gradient(90deg, rgba(104, 24, 48, 1) 0%, rgba(104, 24, 48, 0.8) 100%), url(img/bg-room.png);
+}
+
+#botao-anterior, #botao-proximo {
+    width: 30px;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+
+    position: absolute;
+}
+
+#botao-anterior {
+    left: 4%;
+}
+
+#botao-proximo {
+    right: 4%;
+}
+
+#botao-anterior svg, #botao-proximo svg {
+    fill: #ffffff76;
+}
+
+.botoes {
+    width: 150px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    bottom: 4%;
+
+    /* Centralizar usando position */
+    /* Adicionar left: 50% */
+    /* E margin-left negativa com metade da largura do elemento */
+    left: 50%;
+    margin-left: -75px;
+}
+
+.botoes button {
+    width: 30px;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.botoes button svg {
+    fill: #ffffff76;
 }
 
 header {
@@ -41,12 +113,12 @@ header {
 }
 
 header div.container-grid {
+    /* Porcentagem - Unidade relativa ao elemento pai */
     height: 100%;
-
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 header img {
@@ -62,11 +134,10 @@ header button {
 
     display: flex;
     justify-content: space-between;
-
 }
 
 .menu a {
-    color: white;
+    color: #fff;
 
     font-family: 'Anta';
     font-size: 20px;
@@ -77,11 +148,13 @@ header button {
     transition: text-decoration 500ms ease;
 }
 
-.menu a:hover{
+.menu a:hover {
     text-decoration-color: white;
 }
 
 .conteudo-banner {
+    /* Altura deve ser 100vh - altura do header */
+    /* Coloquei 280px pq fica mais legal */
     height: calc(100vh - 280px);
 
     display: flex;
@@ -91,7 +164,7 @@ header button {
 .conteudo-banner p {
     color: white;
 
-    font-family: 'Anta';
+    font-family: "Anta";
     font-size: 32px;
 }
 
@@ -187,15 +260,17 @@ h2 {
 
     border-radius: 4px;
 
-    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.5);
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .card img {
     height: 55%;
     width: 100%;
 
-    border-radius: 4px 4px 0px 0px;
+    /* border-radius: 4px 4px 0 0; */
 
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .card p {
@@ -233,13 +308,13 @@ h2 {
     background-color: #ad4929;
 }
 
-#portifolio {
+#portfolio {
     height: 250px;
 
     margin-bottom: 120px;
 
     background-image: url(img/depositphotos_82602244-stock-illustration-isometric-pixel-art-characters\ 1.png);
-    background-size: 265px;
+    background-size: 250px;
 
     background-repeat: repeat;
 
@@ -252,34 +327,35 @@ h2 {
     height: 100%;
     width: 100%;
 
-    background-color: #47208bdc;
+    background-color: #47208bc2;
 
     position: absolute;
     top: 0;
 }
 
-#portifolio .container-grid {
+#portfolio .container-grid {
     height: 100%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+
 }
 
-#portifolio a {
+#portfolio a {
     width: fit-content;
     
     font-family: "Anta";
     font-size: 28px;
 
-    color: #fff;
+    color: white;
 
     z-index: 1;
 }
 
-#portifolio a:hover {
+#portfolio a:hover {
     transform: scale(1.05);
-
 }
 
 #contato {
@@ -308,7 +384,7 @@ h2 {
     background-color: var(--roxo-gamifica);
 
     color: white;
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
 }
 
 #contato form label {
@@ -341,7 +417,7 @@ h2 {
 
     text-indent: 10px;
 
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
     font-size: 17px;
 }
 
@@ -366,7 +442,7 @@ h2 {
 
     padding: 10px;
 
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
     font-size: 17px;
 
     outline: none;
@@ -378,11 +454,12 @@ h2 {
     outline: 2px solid var(--laranja-gamifica);
 }
 
+
 #contato form button {
     height: 40px;
     width: 60%;
 
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
     font-size: 17px;
     font-weight: 600;
 
@@ -391,19 +468,20 @@ h2 {
 
     border: none;
     border-radius: 4px;
-   
+
     cursor: pointer;
 
     text-transform: uppercase;
-
-    transition: background-color 500ms ease;
+    
+    transition: background-color 500ms ease ;
 }
 
 #contato form button:hover {
     background-color: #ad4929;
 }
 
-#contato form input::placeholder,
+/* Placeholder */
+#contato form input::placeholder, 
 #contato form textarea::placeholder {
     color: #b9b9b9;
 }
@@ -424,7 +502,7 @@ footer .container-grid {
 
 .redes-sociais {
     height: 50%;
-
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -434,7 +512,7 @@ footer .container-grid {
 .redes-sociais p {
     color: white;
 
-    font-family: 'Anta';
+    font-family: "Anta";
     font-size: 24px;
 }
 
@@ -461,11 +539,11 @@ footer .container-grid {
     display: none;
 }
 
-@media screen and (max-width: 1380px) {
-    header{
+@media screen and (max-width: 1300px) {
+    header {
         position: relative;
     }
-
+    
     header button {
         width: 50px;
 
@@ -473,6 +551,7 @@ footer .container-grid {
 
         background: none;
         border: none;
+
     }
 
     header svg {
@@ -487,12 +566,15 @@ footer .container-grid {
 
         flex-direction: column;
         justify-content: space-around;
+        /* align-items: flex-end; */
 
         background-color: #000000f0;
 
         position: absolute;
         top: 165px;
         right: 0px;
+
+        z-index: 1;
     }
 
     #sobre {
@@ -541,7 +623,7 @@ footer .container-grid {
         text-align: center;
         margin-bottom: 40px;
     }
-
+    
     .redes-sociais {
         align-items: center;
     }
@@ -550,10 +632,10 @@ footer .container-grid {
 @media screen and (max-width: 800px) {
     .card {
         flex-basis: 45%;
-    }   
+    }
 }
 
-@media screen and (max-width:640px) {
+@media screen and (max-width: 700px) {
     #sobre {
         height: unset;
         margin-bottom: 40px;
@@ -567,18 +649,18 @@ footer .container-grid {
         margin-bottom: 30px;
     }
 
-    #cases , #contato {
+    #cases, #contato {
         margin-bottom: unset;
     }
 
-    #portifolio a {
+    #portfolio a {
         width: 100%;
         text-align: center;
     }
 
     .campo, .campo-textarea, #contato form button {
         width: 75%;
-    } 
+    }    
 }
 
 @media screen and (max-width: 520px) {
@@ -595,12 +677,13 @@ footer .container-grid {
     }
 
     .conteudo-banner p {
-        font-size: 22px;
+        font-size: 24px;
     }
 
     nav.menu {
         width: 100%;
 
+        display: none;
     }
 
     #sobre {
@@ -614,7 +697,7 @@ footer .container-grid {
         margin-bottom: 20px;
     }
 
-    #cases {
+    #cases.container-grid {
         width: 100%;
         margin: unset;
     }
@@ -629,8 +712,7 @@ footer .container-grid {
 
     .card {
         height: 400px;
-        width: 280px;
-
+        width: 280px;        
 
         flex-basis: unset;
     }
@@ -643,19 +725,19 @@ footer .container-grid {
         margin-right: 30px;
     }
 
-    #portifolio {
+    #portfolio {
         margin-bottom: 0;
     }
 
     #contato {
-        padding-top: 70px;
+        padding-top: 150px;
 
         background-color: var(--roxo-gamifica);
         color: white;
     }
 
     #contato h2 {
-        margin-bottom: 0;
+        margin-bottom: 0px;
     }
 
     #contato form {
@@ -675,7 +757,7 @@ footer .container-grid {
 
     .conteudo-banner p {
         font-size: 20px;
-    } 
+    }
 
     footer img {
         width: 200px;
