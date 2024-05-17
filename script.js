@@ -124,19 +124,47 @@ const carregarCases = () => {
 }
 
 
-const solicitarOrcamento = () => {
+const solicitarOrcamento = (event) => {
     // Pegar valores dos inputs
     let valorNome = document.getElementById("campo-nome").value
     let valorEmail = document.getElementById("campo-email").value
     let valorDescricao = document.getElementById("campo-descricao").value
 
-    console.log(valorNome);
-    console.log(valorEmail);
-    console.log(valorDescricao);
-
     // Organizar objeto com os valores
+
+    let dadosForm = {
+        nome: valorNome,
+        email: valorEmail,
+        descricao: valorDescricao
+    }
     // Enviar requisicao para a api
+     // Enviar requisicao para a api
+    // 127.0.0.1 = localhost
+    // Método HTTP POST - Create -> Cadastrar ou criar 
+
+    fetch("http://127.0.0.1:3000/solicitacoes", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dadosForm)
+    })
+    .then(resposta => {
+        console.log(resposta)
+
         // Limpar os campos
+        document.querySelector("#contato form").reset()
+
         // Mostrar alert com msg de sucesso
-        // CASO ERRO - alert com msg erro
+        alert("Solicitação cadastrada!")
+
+    })
+
+    // CASO ERRO - alert com msg erro
+    .catch(erro => {
+        console.error(erro)
+        alert("Erro na requisição.")
+    })
+
+    event.preventDefault()
 }
